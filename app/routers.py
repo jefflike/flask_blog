@@ -1,11 +1,23 @@
+from flask import render_template
+
 from app import app
 
 @app.route('/')
 @app.route('/index')
 def index():
     '''
-    这个视图函数装饰的两个路由的任意一个
-    都可以直接访问我们的视图函数
+    视图函数中将数据渲染进模板
     :return:
     '''
-    return "Hello, World!"
+    user = {'username': 'jeff'}
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    return render_template('index.html', title='Home', user=user, posts=posts)
