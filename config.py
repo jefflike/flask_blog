@@ -11,3 +11,9 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_DATABASE_URI = 'mysql+cymysql://root:root@localhost:3306/flaskdev'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    MAIL_SERVER = os.environ.get('smtp.sina.com')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
+    MAIL_USERNAME = os.environ.get('emailforproject@sina.com')
+    MAIL_PASSWORD = os.environ.get('admin123')
+    ADMINS = ['2609749420@qq.com']

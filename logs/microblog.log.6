@@ -1,0 +1,41 @@
+2018-04-06 17:28:18,216 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 17:32:29,399 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 18:29:18,549 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 18:29:47,223 ERROR: Exception on /edit_profile [GET] [in /home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jeff/PycharmProjects/flask_blog/app/routers.py", line 101, in edit_profile
+    form.about_me.data = current_user.about_me
+  File "/home/jeff/.virtualenvs/flask_blog/lib/python3.5/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'User' object has no attribute 'about_me'
+2018-04-06 18:32:04,679 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 18:34:57,056 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:17:58,471 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:20:32,500 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:25:13,593 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:26:52,284 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:29:20,388 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:29:48,387 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:35:20,427 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 20:58:46,654 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 21:03:22,994 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 21:03:49,497 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 21:03:57,280 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 21:04:17,020 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 21:10:16,842 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 21:13:14,835 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
+2018-04-06 21:22:19,695 INFO: Microblog startup [in /home/jeff/PycharmProjects/flask_blog/app/__init__.py:46]
