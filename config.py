@@ -17,3 +17,4 @@ class Config:
     MAIL_USERNAME = os.environ.get('emailforproject@sina.com')
     MAIL_PASSWORD = os.environ.get('admin123')
     ADMINS = ['2609749420@qq.com']
+    POSTS_PER_PAGE = 2
