@@ -9,6 +9,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, Manager, MigrateCommand
 from flask_login import LoginManager
+from flask_bootstrap import Bootstrap
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -19,6 +21,7 @@ manager.add_command('db', MigrateCommand)
 login = LoginManager(app)
 login.login_view = 'login'
 mail = Mail(app)
+bootstrap = Bootstrap(app)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
