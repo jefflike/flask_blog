@@ -3,6 +3,8 @@ from logging.handlers import RotatingFileHandler, SMTPHandler
 
 import os
 from flask import Flask
+from flask_mail import Mail
+
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, Manager, MigrateCommand
@@ -16,6 +18,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 login = LoginManager(app)
 login.login_view = 'login'
+mail = Mail(app)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
