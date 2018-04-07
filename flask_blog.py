@@ -1,8 +1,9 @@
+from app import create_app
+from config import Config
 
 
-from app import manager
-
+app = create_app(Config)
 
 
 if __name__ == '__main__':
-    manager.run()
+    app.run(debug=True)
