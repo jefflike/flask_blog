@@ -36,6 +36,7 @@ class Config:
     SSL_DISABLE = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.sina.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = True

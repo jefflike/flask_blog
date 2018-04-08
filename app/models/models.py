@@ -1,7 +1,7 @@
 from hashlib import md5
 from datetime import datetime
 from time import time
-from flask_sqlalchemy import SQLAlchemy
+from app import db
 
 import jwt
 from flask_login import UserMixin
@@ -11,7 +11,8 @@ from flask import current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
+
 
 followers = db.Table(
     'followers',
@@ -79,7 +80,6 @@ class User(UserMixin, db.Model):
                             algorithms=['HS256'])['reset_password']
         except:
             return
-
 
 
 class Post(db.Model):

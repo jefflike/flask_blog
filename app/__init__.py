@@ -5,27 +5,32 @@ import os
 from flask import Flask, request
 from flask_mail import Mail
 
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate, Manager, MigrateCommand
+# from flask_migrate import Migrate, Manager, MigrateCommand
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from app.models.models import db
-# from flask_babel import Babel
+from flask_sqlalchemy import SQLAlchemy
+
+# from app.models.models import db
+
+login = LoginManager()
+login.login_view = 'web.login'
+mail = Mail()
+bootstrap = Bootstrap()
+moment = Moment()
+db = SQLAlchemy()
+
 
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config_name)
 
-    migrate = Migrate(app, db)
-    manager = Manager(app)
-    manager.add_command('db', MigrateCommand)
-    login = LoginManager(app)
-    login.login_view = 'login'
-    mail = Mail(app)
-    bootstrap = Bootstrap(app)
-    moment = Moment(app)
-    # babel = Babel(app)
+    login.init_app(app)
+    bootstrap.init_app(app)
+    mail.init_app(app)
+    moment.init_app(app)
+    db.init_app(app)
+    # db.create_all(app=app)
     register_blueprint(app)
 
     if not app.debug:

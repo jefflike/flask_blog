@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_user, logout_user, login_required, LoginManager
 from werkzeug.urls import url_parse
 
 from app import db
@@ -9,13 +9,17 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, Re
 from app.models.models import User, Post
 from app.email import send_password_reset_email
 from . import web
+#
+# loginmanager=LoginManager()
+# loginmanager.session_protection='strong'
+# loginmanager.login_view='web.login'
 
 
-# @web.before_request
-# def before_request():
-#     if current_user.is_authenticated:
-#         current_user.last_seen = datetime.now()
-#         db.session.commit()
+@web.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.now()
+        db.session.commit()
 
 
 @web.route('/', methods=['GET', 'POST'])
@@ -30,16 +34,15 @@ def index():
         flash('Your post is now live!')
         return redirect(url_for('web.index'))
     page = request.args.get('page', 1, type=int)
-    # posts = current_user.followed_posts().paginate(
-        # page, web.config['POSTS_PER_PAGE'], False)
-    # next_url = url_for('web.explore', page=posts.next_num) \
-    #     if posts.has_next else None
-    # prev_url = url_for('web.explore', page=posts.prev_num) \
-    #     if posts.has_prev else None
-    # return render_template('index.html', title='Home', form=form,
-    #                        posts=posts.items, next_url=next_url,
-    #                        prev_url=prev_url)
-    return 'aaa'
+    posts = current_user.followed_posts().paginate(
+        page, web.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('web.explore', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('web.explore', page=posts.prev_num) \
+        if posts.has_prev else None
+    return render_template('index.html', title='Home', form=form,
+                           posts=posts.items, next_url=next_url,
+                           prev_url=prev_url)
 
 
 @web.route('/explore')
@@ -56,9 +59,8 @@ def explore():
                            next_url=next_url, prev_url=prev_url)
 
 
-@web.route('/login', methods=['GET', 'POST'])
+@web.route('/login', endpoint='login', methods=['GET', 'POST'])
 def login():
-    print('come in')
     if current_user.is_authenticated:
         return redirect(url_for('web.index'))
     form = LoginForm()
