@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import unittest
-from app import app, db
+from app import db
+from flask_blog import app
 from app.models.models import User, Post
 
 class UserModelCase(unittest.TestCase):

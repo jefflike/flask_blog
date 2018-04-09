@@ -6,10 +6,11 @@
                 </a>
             </td>
             <td>
-                <a href="{{ url_for('we.user', username=post.author.username) }}">
+                <a href="{{ url_for('web.user', username=post.author.username) }}">
                     {{ post.author.username }}
                 </a>
-                said {{ moment(post.timestamp).fromNow() }}:
+                said:
+{#                said {{ moment(post.timestamp).fromNow() }}:#}
                 <br>
                 {{ post.body }}
             </td>

@@ -1,7 +1,7 @@
 from hashlib import md5
 from datetime import datetime
 from time import time
-from app import db
+from app import db, login
 
 import jwt
 from flask_login import UserMixin
@@ -92,6 +92,6 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
-# @login.user_loader
-# def load_user(id):
-#     return User.query.get(int(id))
+@login.user_loader
+def get_user(id):
+    return User.query.get(int(id))

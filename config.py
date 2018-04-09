@@ -32,6 +32,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
+    DEBUG = True
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
     SSL_DISABLE = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
@@ -40,8 +41,10 @@ class Config:
     MAIL_SERVER = 'smtp.sina.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'emailforproject@sina.com'
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    # MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'emailforproject@sina.com'
+    # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_USERNAME = 'emailforproject@sina.com'
+    MAIL_PASSWORD = 'admin@123'
     SQLALCHEMY_DATABASE_URI = 'mysql+cymysql://root:root@localhost:3306/flaskdev'
     ADMINS = ['emailforproject@sina.com']
     POSTS_PER_PAGE = 2

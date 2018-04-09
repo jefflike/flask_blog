@@ -1,6 +1,6 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user, login_user, logout_user, login_required, LoginManager
+from flask import render_template, flash, redirect, url_for, request, current_app
+from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
 from app import db
@@ -9,10 +9,6 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, Re
 from app.models.models import User, Post
 from app.email import send_password_reset_email
 from . import web
-#
-# loginmanager=LoginManager()
-# loginmanager.session_protection='strong'
-# loginmanager.login_view='web.login'
 
 
 @web.before_request
@@ -35,7 +31,7 @@ def index():
         return redirect(url_for('web.index'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(
-        page, web.config['POSTS_PER_PAGE'], False)
+        page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('web.explore', page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('web.explore', page=posts.prev_num) \
@@ -50,7 +46,7 @@ def index():
 def explore():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, web.config['POSTS_PER_PAGE'], False)
+        page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('web.explore', page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('web.explore', page=posts.prev_num) \

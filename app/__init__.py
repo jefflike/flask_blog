@@ -2,7 +2,7 @@ import logging
 from logging.handlers import RotatingFileHandler, SMTPHandler
 
 import os
-from flask import Flask, request
+from flask import Flask, request, current_app
 from flask_mail import Mail
 
 # from flask_migrate import Migrate, Manager, MigrateCommand
@@ -65,8 +65,6 @@ def create_app(config_name):
         # def get_locale():
         #     return request.accept_languages.best_match(app.config['LANGUAGES'])
     return app
-
-
 
 
 def register_blueprint(app):
